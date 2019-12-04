@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10A1485B23977B40002A4F48 /* NSNotification.Name+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A1485A23977B40002A4F48 /* NSNotification.Name+.swift */; };
+		10A1485D239783A1002A4F48 /* NotebookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A1485C239783A1002A4F48 /* NotebookCell.swift */; };
+		10A148602397843C002A4F48 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A1485F2397843C002A4F48 /* Constant.swift */; };
 		3EE8551389E7A0C1A85864B5 /* Pods_SplitViewControllerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6494FC45C6ECF192625106D /* Pods_SplitViewControllerDemo.framework */; };
 		8EC3E27F2396D8D40077826D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC3E27E2396D8D40077826D /* AppDelegate.swift */; };
 		8EC3E2812396D8D40077826D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC3E2802396D8D40077826D /* ViewController.swift */; };
@@ -22,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10A1485A23977B40002A4F48 /* NSNotification.Name+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification.Name+.swift"; sourceTree = "<group>"; };
+		10A1485C239783A1002A4F48 /* NotebookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotebookCell.swift; path = SplitViewControllerDemo/Model/Extension/NotebookCell.swift; sourceTree = SOURCE_ROOT; };
+		10A1485F2397843C002A4F48 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		8EC3E27B2396D8D40077826D /* SplitViewControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitViewControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EC3E27E2396D8D40077826D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EC3E2802396D8D40077826D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +58,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10A1485923977B29002A4F48 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				10A1485A23977B40002A4F48 /* NSNotification.Name+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		4108E6318E2D850DB37E0318 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +122,8 @@
 		8EC3E29A239723C30077826D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				10A1485F2397843C002A4F48 /* Constant.swift */,
+				10A1485923977B29002A4F48 /* Extension */,
 				8EC3E29C239723D80077826D /* Notebook.swift */,
 				8EC3E29E239723DC0077826D /* Note.swift */,
 				8EC3E2A023972CF00077826D /* Storage.swift */,
@@ -118,6 +134,7 @@
 		8EC3E29B239723C90077826D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				10A1485C239783A1002A4F48 /* NotebookCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -259,10 +276,13 @@
 			files = (
 				8EC3E2812396D8D40077826D /* ViewController.swift in Sources */,
 				8EC3E299239712560077826D /* NotesViewController.swift in Sources */,
+				10A1485D239783A1002A4F48 /* NotebookCell.swift in Sources */,
 				8EC3E29F239723DC0077826D /* Note.swift in Sources */,
+				10A1485B23977B40002A4F48 /* NSNotification.Name+.swift in Sources */,
 				8EC3E27F2396D8D40077826D /* AppDelegate.swift in Sources */,
 				8EC3E2A123972CF00077826D /* Storage.swift in Sources */,
 				8EC3E2912396E9AC0077826D /* NotebooksViewController.swift in Sources */,
+				10A148602397843C002A4F48 /* Constant.swift in Sources */,
 				8EC3E29D239723D80077826D /* Notebook.swift in Sources */,
 				8EC3E294239706620077826D /* R.generated.swift in Sources */,
 			);

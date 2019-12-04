@@ -1,0 +1,21 @@
+//
+//  Constant.swift
+//  SplitViewControllerDemo
+//
+//  Created by tongyi on 12/3/19.
+//  Copyright © 2019 Yi Tong. All rights reserved.
+//
+
+enum Constant {
+    enum Identifier {
+        static let NOTEBOOKCELL = "NOTEBOOKCELL"
+    }
+    
+    enum Strings {
+        static let myNotebooks = "My notebooks"
+        static let sharedWithMe = "Shared with me"
+        static let iSharedTo = "I shared to"
+        
+        static let refreshingText = "Pull to refresh"
+    }
+}
