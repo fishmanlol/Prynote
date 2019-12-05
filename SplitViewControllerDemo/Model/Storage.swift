@@ -8,11 +8,6 @@
 
 import Foundation
 
-struct NotebookBlock {
-    var title: String
-    var notebooks: [Notebook] = []
-}
-
 struct Storage {
     static var shared = Storage()
     
@@ -65,9 +60,9 @@ struct Storage {
             ]
             
             shared.notebookBlocks = [
-                NotebookBlock(title: Constant.Strings.myNotebooks, notebooks: myNoteBooks),
-                NotebookBlock(title: Constant.Strings.sharedWithMe, notebooks: sharedWithMe),
-                NotebookBlock(title: Constant.Strings.iSharedTo, notebooks: []),
+                NotebookBlock(title: Constant.Strings.myNotebooks, notebooks: myNoteBooks, isFold: true),
+                NotebookBlock(title: Constant.Strings.sharedWithMe, notebooks: sharedWithMe, isFold: true),
+                NotebookBlock(title: Constant.Strings.iSharedTo, notebooks: sharedWithMe, isFold: true),
             ]
             
             NotificationCenter.default.post(name: .didStorageUpdate, object: nil)

@@ -10,4 +10,5 @@ import UIKit
 
 class NotebookCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var notesCountLabel: UILabel!
 }

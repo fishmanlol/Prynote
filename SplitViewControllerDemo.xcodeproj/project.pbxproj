@@ -11,6 +11,12 @@
 		10A1485D239783A1002A4F48 /* NotebookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A1485C239783A1002A4F48 /* NotebookCell.swift */; };
 		10A148602397843C002A4F48 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A1485F2397843C002A4F48 /* Constant.swift */; };
 		3EE8551389E7A0C1A85864B5 /* Pods_SplitViewControllerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6494FC45C6ECF192625106D /* Pods_SplitViewControllerDemo.framework */; };
+		8E0DB3BE2398257A00475B50 /* _NotebookHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0DB3BD2398257A00475B50 /* _NotebookHeader.xib */; };
+		8E0DB3C02398258900475B50 /* NotebookHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0DB3BF2398258900475B50 /* NotebookHeader.swift */; };
+		8E0DB3C22398262E00475B50 /* NotebookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0DB3C12398262E00475B50 /* NotebookCell.xib */; };
+		8E0DB3C423983EDB00475B50 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0DB3C323983EDB00475B50 /* UIView+.swift */; };
+		8E0DB3C62398583900475B50 /* NotebookBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0DB3C52398583900475B50 /* NotebookBlock.swift */; };
+		8E0DB3C82398808000475B50 /* NotebookHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0DB3C72398808000475B50 /* NotebookHeader.xib */; };
 		8EC3E27F2396D8D40077826D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC3E27E2396D8D40077826D /* AppDelegate.swift */; };
 		8EC3E2812396D8D40077826D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC3E2802396D8D40077826D /* ViewController.swift */; };
 		8EC3E2842396D8D40077826D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EC3E2822396D8D40077826D /* Main.storyboard */; };
@@ -28,6 +34,12 @@
 		10A1485A23977B40002A4F48 /* NSNotification.Name+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification.Name+.swift"; sourceTree = "<group>"; };
 		10A1485C239783A1002A4F48 /* NotebookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotebookCell.swift; path = SplitViewControllerDemo/Model/Extension/NotebookCell.swift; sourceTree = SOURCE_ROOT; };
 		10A1485F2397843C002A4F48 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		8E0DB3BD2398257A00475B50 /* _NotebookHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = _NotebookHeader.xib; sourceTree = "<group>"; };
+		8E0DB3BF2398258900475B50 /* NotebookHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookHeader.swift; sourceTree = "<group>"; };
+		8E0DB3C12398262E00475B50 /* NotebookCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotebookCell.xib; sourceTree = "<group>"; };
+		8E0DB3C323983EDB00475B50 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		8E0DB3C52398583900475B50 /* NotebookBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookBlock.swift; sourceTree = "<group>"; };
+		8E0DB3C72398808000475B50 /* NotebookHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotebookHeader.xib; sourceTree = "<group>"; };
 		8EC3E27B2396D8D40077826D /* SplitViewControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitViewControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EC3E27E2396D8D40077826D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EC3E2802396D8D40077826D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				10A1485A23977B40002A4F48 /* NSNotification.Name+.swift */,
+				8E0DB3C323983EDB00475B50 /* UIView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -86,10 +99,10 @@
 		8EC3E2722396D8D40077826D = {
 			isa = PBXGroup;
 			children = (
-				8EC3E27D2396D8D40077826D /* SplitViewControllerDemo */,
-				8EC3E27C2396D8D40077826D /* Products */,
-				624A3A0EE67D4F41B88991B5 /* Pods */,
 				4108E6318E2D850DB37E0318 /* Frameworks */,
+				624A3A0EE67D4F41B88991B5 /* Pods */,
+				8EC3E27C2396D8D40077826D /* Products */,
+				8EC3E27D2396D8D40077826D /* SplitViewControllerDemo */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +140,7 @@
 				8EC3E29C239723D80077826D /* Notebook.swift */,
 				8EC3E29E239723DC0077826D /* Note.swift */,
 				8EC3E2A023972CF00077826D /* Storage.swift */,
+				8E0DB3C52398583900475B50 /* NotebookBlock.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -135,6 +149,10 @@
 			isa = PBXGroup;
 			children = (
 				10A1485C239783A1002A4F48 /* NotebookCell.swift */,
+				8E0DB3C12398262E00475B50 /* NotebookCell.xib */,
+				8E0DB3BF2398258900475B50 /* NotebookHeader.swift */,
+				8E0DB3BD2398257A00475B50 /* _NotebookHeader.xib */,
+				8E0DB3C72398808000475B50 /* NotebookHeader.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -201,8 +219,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EC3E2892396D8D60077826D /* LaunchScreen.storyboard in Resources */,
+				8E0DB3BE2398257A00475B50 /* _NotebookHeader.xib in Resources */,
+				8E0DB3C22398262E00475B50 /* NotebookCell.xib in Resources */,
 				8EC3E2862396D8D60077826D /* Assets.xcassets in Resources */,
 				8EC3E2842396D8D40077826D /* Main.storyboard in Resources */,
+				8E0DB3C82398808000475B50 /* NotebookHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,11 +300,14 @@
 				10A1485D239783A1002A4F48 /* NotebookCell.swift in Sources */,
 				8EC3E29F239723DC0077826D /* Note.swift in Sources */,
 				10A1485B23977B40002A4F48 /* NSNotification.Name+.swift in Sources */,
+				8E0DB3C02398258900475B50 /* NotebookHeader.swift in Sources */,
 				8EC3E27F2396D8D40077826D /* AppDelegate.swift in Sources */,
 				8EC3E2A123972CF00077826D /* Storage.swift in Sources */,
 				8EC3E2912396E9AC0077826D /* NotebooksViewController.swift in Sources */,
 				10A148602397843C002A4F48 /* Constant.swift in Sources */,
+				8E0DB3C423983EDB00475B50 /* UIView+.swift in Sources */,
 				8EC3E29D239723D80077826D /* Notebook.swift in Sources */,
+				8E0DB3C62398583900475B50 /* NotebookBlock.swift in Sources */,
 				8EC3E294239706620077826D /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

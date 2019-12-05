@@ -114,10 +114,16 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.image` struct is generated, and contains static references to 4 images.
+  /// This `R.image` struct is generated, and contains static references to 7 images.
   struct image {
     /// Image `add`.
     static let add = Rswift.ImageResource(bundle: R.hostingBundle, name: "add")
+    /// Image `arrow_right_bold`.
+    static let arrow_right_bold = Rswift.ImageResource(bundle: R.hostingBundle, name: "arrow_right_bold")
+    /// Image `arrow_right`.
+    static let arrow_right = Rswift.ImageResource(bundle: R.hostingBundle, name: "arrow_right")
+    /// Image `folder`.
+    static let folder = Rswift.ImageResource(bundle: R.hostingBundle, name: "folder")
     /// Image `notebook`.
     static let notebook = Rswift.ImageResource(bundle: R.hostingBundle, name: "notebook")
     /// Image `search`.
@@ -129,6 +135,27 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "add", bundle: ..., traitCollection: ...)`
     static func add(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.add, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "arrow_right", bundle: ..., traitCollection: ...)`
+    static func arrow_right(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.arrow_right, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "arrow_right_bold", bundle: ..., traitCollection: ...)`
+    static func arrow_right_bold(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.arrow_right_bold, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "folder", bundle: ..., traitCollection: ...)`
+    static func folder(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.folder, compatibleWith: traitCollection)
     }
     #endif
 
@@ -156,12 +183,58 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
+  /// This `R.nib` struct is generated, and contains static references to 3 nibs.
+  struct nib {
+    /// Nib `NotebookCell`.
+    static let notebookCell = _R.nib._NotebookCell()
+    /// Nib `NotebookHeader`.
+    static let notebookHeader = _R.nib._NotebookHeader()
+    /// Nib `_NotebookHeader`.
+    static let _NotebookHeader = _R.nib.__NotebookHeader()
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "NotebookCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.notebookCell) instead")
+    static func notebookCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.notebookCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "NotebookHeader", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.notebookHeader) instead")
+    static func notebookHeader(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.notebookHeader)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "_NotebookHeader", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib._NotebookHeader) instead")
+    static func _NotebookHeader(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib._NotebookHeader)
+    }
+    #endif
+
+    static func _NotebookHeader(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NotebookHeader? {
+      return R.nib._NotebookHeader.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? NotebookHeader
+    }
+
+    static func notebookCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NotebookCell? {
+      return R.nib.notebookCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? NotebookCell
+    }
+
+    static func notebookHeader(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NotebookHeader? {
+      return R.nib.notebookHeader.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? NotebookHeader
+    }
+
+    fileprivate init() {}
+  }
+
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `NOTEBOOKCELL`.
     static let notebookcelL: Rswift.ReuseIdentifier<NotebookCell> = Rswift.ReuseIdentifier(identifier: "NOTEBOOKCELL")
-    /// Reuse identifier `NOTECELL`.
-    static let notecelL: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "NOTECELL")
 
     fileprivate init() {}
   }
@@ -182,9 +255,83 @@ struct R: Rswift.Validatable {
 struct _R: Rswift.Validatable {
   static func validate() throws {
     #if os(iOS) || os(tvOS)
+    try nib.validate()
+    #endif
+    #if os(iOS) || os(tvOS)
     try storyboard.validate()
     #endif
   }
+
+  #if os(iOS) || os(tvOS)
+  struct nib: Rswift.Validatable {
+    static func validate() throws {
+      try _NotebookCell.validate()
+      try _NotebookHeader.validate()
+      try __NotebookHeader.validate()
+    }
+
+    struct _NotebookCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
+      typealias ReusableType = NotebookCell
+
+      let bundle = R.hostingBundle
+      let identifier = "NOTEBOOKCELL"
+      let name = "NotebookCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NotebookCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? NotebookCell
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "arrow_right", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'arrow_right' is used in nib 'NotebookCell', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "folder", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'folder' is used in nib 'NotebookCell', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _NotebookHeader: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "NotebookHeader"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NotebookHeader? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? NotebookHeader
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "arrow_right_bold", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'arrow_right_bold' is used in nib 'NotebookHeader', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct __NotebookHeader: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "_NotebookHeader"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NotebookHeader? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? NotebookHeader
+      }
+
+      func secondView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[1] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "arrow_right_bold", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'arrow_right_bold' is used in nib '_NotebookHeader', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    fileprivate init() {}
+  }
+  #endif
 
   #if os(iOS) || os(tvOS)
   struct storyboard: Rswift.Validatable {

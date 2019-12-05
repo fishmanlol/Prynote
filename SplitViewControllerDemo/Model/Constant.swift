@@ -9,6 +9,8 @@
 enum Constant {
     enum Identifier {
         static let NOTEBOOKCELL = "NOTEBOOKCELL"
+        static let NOTEBOOKHEADER = "NOTEBOOKHEADER"
+        static let SHOWNOTES = "SHOWNOTES"
     }
     
     enum Strings {
