@@ -8,7 +8,24 @@
 
 import Foundation
 
-struct Notebook {
+class Notebook {
     var title: String
     var notes: [Note] = []
+    var allLoaded = false
+    
+    init(title: String) {
+        self.title = title
+        let group = DispatchGroup()
+        for note in notes {
+            group.enter()
+            note.load {
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: DispatchQueue.main) {
+            self.allLoaded = true
+            NotificationCenter.default.post(name: .didAllNotesLoad, object: self, userInfo: nil)
+        }
+    }
 }

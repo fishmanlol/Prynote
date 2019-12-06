@@ -31,11 +31,21 @@
                             <constraint firstAttribute="height" constant="20" id="f2O-6P-OCV"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kv-QU-FVV">
+                        <rect key="frame" x="0.0" y="91.5" width="574" height="1"/>
+                        <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="y9k-yp-auE"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="2kv-QU-FVV" firstAttribute="leading" secondItem="0lA-kQ-smM" secondAttribute="leading" id="6DP-ES-yav"/>
                     <constraint firstAttribute="bottom" secondItem="oW8-zG-bTl" secondAttribute="bottom" constant="8" id="8Cw-fC-pPa"/>
+                    <constraint firstAttribute="trailing" secondItem="2kv-QU-FVV" secondAttribute="trailing" id="FYo-A0-lx1"/>
                     <constraint firstAttribute="bottom" secondItem="5VA-qg-hav" secondAttribute="bottom" constant="8" id="IRL-ff-U3B"/>
                     <constraint firstItem="oW8-zG-bTl" firstAttribute="leading" secondItem="0lA-kQ-smM" secondAttribute="leading" constant="24" id="Sul-tK-KxA"/>
+                    <constraint firstAttribute="bottom" secondItem="2kv-QU-FVV" secondAttribute="bottom" id="Yvm-Zt-7Wf"/>
                     <constraint firstAttribute="trailing" secondItem="5VA-qg-hav" secondAttribute="trailing" constant="16" id="t7d-vY-wYE"/>
                 </constraints>
             </tableViewCellContentView>
@@ -44,7 +54,7 @@
                 <outlet property="arrowImageView" destination="5VA-qg-hav" id="XE4-qf-3tX"/>
                 <outlet property="titleLabel" destination="oW8-zG-bTl" id="ZZP-pg-2DT"/>
             </connections>
-            <point key="canvasLocation" x="174" y="41"/>
+            <point key="canvasLocation" x="173.91304347826087" y="40.513392857142854"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -7,6 +7,7 @@ target 'SplitViewControllerDemo' do
   pod 'SnapKit'
   pod 'R.swift'
   pod 'Reveal-SDK', :configurations => ['Debug']
+  pod 'DZNEmptyDataSet'
   # Pods for SplitViewControllerDemo
 
 end

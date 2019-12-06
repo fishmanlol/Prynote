@@ -89,6 +89,47 @@ struct R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
+  /// This `R.segue` struct is generated, and contains static references to 2 view controllers.
+  struct segue {
+    /// This struct is generated for `NotebooksViewController`, and contains static references to 1 segues.
+    struct notebooksViewController {
+      /// Segue identifier `SHOWNOTES`.
+      static let shownoteS: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, NotebooksViewController, NotesViewController> = Rswift.StoryboardSegueIdentifier(identifier: "SHOWNOTES")
+
+      #if os(iOS) || os(tvOS)
+      /// Optionally returns a typed version of segue `SHOWNOTES`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func shownoteS(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, NotebooksViewController, NotesViewController>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.notebooksViewController.shownoteS, segue: segue)
+      }
+      #endif
+
+      fileprivate init() {}
+    }
+
+    /// This struct is generated for `NotesViewController`, and contains static references to 1 segues.
+    struct notesViewController {
+      /// Segue identifier `SHOWNOTEDETAIL`.
+      static let shownotedetaiL: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, NotesViewController, NoteDetailViewController> = Rswift.StoryboardSegueIdentifier(identifier: "SHOWNOTEDETAIL")
+
+      #if os(iOS) || os(tvOS)
+      /// Optionally returns a typed version of segue `SHOWNOTEDETAIL`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func shownotedetaiL(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, NotesViewController, NoteDetailViewController>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.notesViewController.shownotedetaiL, segue: segue)
+      }
+      #endif
+
+      fileprivate init() {}
+    }
+
+    fileprivate init() {}
+  }
+  #endif
+
+  #if os(iOS) || os(tvOS)
   /// This `R.storyboard` struct is generated, and contains static references to 2 storyboards.
   struct storyboard {
     /// Storyboard `LaunchScreen`.
@@ -114,7 +155,7 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.image` struct is generated, and contains static references to 7 images.
+  /// This `R.image` struct is generated, and contains static references to 9 images.
   struct image {
     /// Image `add`.
     static let add = Rswift.ImageResource(bundle: R.hostingBundle, name: "add")
@@ -126,10 +167,14 @@ struct R: Rswift.Validatable {
     static let folder = Rswift.ImageResource(bundle: R.hostingBundle, name: "folder")
     /// Image `notebook`.
     static let notebook = Rswift.ImageResource(bundle: R.hostingBundle, name: "notebook")
+    /// Image `option`.
+    static let option = Rswift.ImageResource(bundle: R.hostingBundle, name: "option")
     /// Image `search`.
     static let search = Rswift.ImageResource(bundle: R.hostingBundle, name: "search")
     /// Image `user`.
     static let user = Rswift.ImageResource(bundle: R.hostingBundle, name: "user")
+    /// Image `write`.
+    static let write = Rswift.ImageResource(bundle: R.hostingBundle, name: "write")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "add", bundle: ..., traitCollection: ...)`
@@ -167,6 +212,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "option", bundle: ..., traitCollection: ...)`
+    static func option(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.option, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "search", bundle: ..., traitCollection: ...)`
     static func search(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.search, compatibleWith: traitCollection)
@@ -180,17 +232,32 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "write", bundle: ..., traitCollection: ...)`
+    static func write(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.write, compatibleWith: traitCollection)
+    }
+    #endif
+
     fileprivate init() {}
   }
 
   /// This `R.nib` struct is generated, and contains static references to 3 nibs.
   struct nib {
+    /// Nib `NoteCell`.
+    static let noteCell = _R.nib._NoteCell()
     /// Nib `NotebookCell`.
     static let notebookCell = _R.nib._NotebookCell()
     /// Nib `NotebookHeader`.
     static let notebookHeader = _R.nib._NotebookHeader()
-    /// Nib `_NotebookHeader`.
-    static let _NotebookHeader = _R.nib.__NotebookHeader()
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "NoteCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.noteCell) instead")
+    static func noteCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.noteCell)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "NotebookCell", in: bundle)`
@@ -208,16 +275,8 @@ struct R: Rswift.Validatable {
     }
     #endif
 
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "_NotebookHeader", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib._NotebookHeader) instead")
-    static func _NotebookHeader(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib._NotebookHeader)
-    }
-    #endif
-
-    static func _NotebookHeader(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NotebookHeader? {
-      return R.nib._NotebookHeader.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? NotebookHeader
+    static func noteCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NoteCell? {
+      return R.nib.noteCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? NoteCell
     }
 
     static func notebookCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NotebookCell? {
@@ -231,10 +290,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `NOTEBOOKCELL`.
     static let notebookcelL: Rswift.ReuseIdentifier<NotebookCell> = Rswift.ReuseIdentifier(identifier: "NOTEBOOKCELL")
+    /// Reuse identifier `NOTECELL`.
+    static let notecelL: Rswift.ReuseIdentifier<NoteCell> = Rswift.ReuseIdentifier(identifier: "NOTECELL")
 
     fileprivate init() {}
   }
@@ -267,7 +328,20 @@ struct _R: Rswift.Validatable {
     static func validate() throws {
       try _NotebookCell.validate()
       try _NotebookHeader.validate()
-      try __NotebookHeader.validate()
+    }
+
+    struct _NoteCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = NoteCell
+
+      let bundle = R.hostingBundle
+      let identifier = "NOTECELL"
+      let name = "NoteCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NoteCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? NoteCell
+      }
+
+      fileprivate init() {}
     }
 
     struct _NotebookCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
@@ -301,27 +375,6 @@ struct _R: Rswift.Validatable {
 
       static func validate() throws {
         if UIKit.UIImage(named: "arrow_right_bold", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'arrow_right_bold' is used in nib 'NotebookHeader', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
-    }
-
-    struct __NotebookHeader: Rswift.NibResourceType, Rswift.Validatable {
-      let bundle = R.hostingBundle
-      let name = "_NotebookHeader"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> NotebookHeader? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? NotebookHeader
-      }
-
-      func secondView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[1] as? UIKit.UIView
-      }
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "arrow_right_bold", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'arrow_right_bold' is used in nib '_NotebookHeader', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }
@@ -369,6 +422,7 @@ struct _R: Rswift.Validatable {
 
       static func validate() throws {
         if UIKit.UIImage(named: "notebook", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'notebook' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "option", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'option' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "search", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'search' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "user", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'user' is used in storyboard 'Main', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {

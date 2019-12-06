@@ -29,7 +29,7 @@ class NotebooksViewController: UITableViewController {
     @objc private func didStorageUpdate(no: Notification) {
         if isViewLoaded {
             DispatchQueue.main.async {
-//                self.tableView.reloadData()
+                self.tableView.reloadData()
             }
         }
     }
@@ -41,13 +41,19 @@ class NotebooksViewController: UITableViewController {
     //MARK: - Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constant.Identifier.SHOWNOTES {
-            
+            if let notesViewController = segue.destination as? NotesViewController, let indexPath = sender as? IndexPath {
+                notesViewController.notebook = getNotebook(in: indexPath)
+            }
         }
     }
 }
 
 //MARK: - Helper functions
 extension NotebooksViewController {
+    private func getNotebook(in indexPath: IndexPath) -> Notebook {
+        return Storage.shared.notebookBlocks[indexPath.section].notebooks[indexPath.row]
+    }
+    
     private func isFold(in section: Int) -> Bool {
         return Storage.shared.notebookBlocks[section].isFold
     }
@@ -72,9 +78,6 @@ extension NotebooksViewController {
         tableView.register(UINib(resource: R.nib.notebookHeader), forHeaderFooterViewReuseIdentifier: Constant.Identifier.NOTEBOOKHEADER)
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.white
-//        tableView.sectionHeaderHeight = 56
-//        tableView.sectionFooterHeight = 0.01
-//        tableView.rowHeight = 56
     }
     
     private func setUpRefreshing() {
@@ -100,6 +103,7 @@ extension NotebooksViewController: NotebookHeaderDelegate {
 //MARK: - UITableView datasource and delegate
 extension NotebooksViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
+        print(Storage.shared.notebookBlocks.count)
         return Storage.shared.notebookBlocks.count
     }
     
@@ -112,7 +116,7 @@ extension NotebooksViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print(#function)
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.Identifier.NOTEBOOKCELL) as! NotebookCell
-        let notebook = Storage.shared.notebookBlocks[indexPath.section].notebooks[indexPath.row]
+        let notebook = getNotebook(in: indexPath)
         configure(cell, with: notebook)
         return cell
     }
@@ -129,7 +133,7 @@ extension NotebooksViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: Constant.Identifier.SHOWNOTES, sender: nil)
+        performSegue(withIdentifier: Constant.Identifier.SHOWNOTES, sender: indexPath)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -143,13 +147,5 @@ extension NotebooksViewController {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.01
     }
-    
-//    override func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-//        return 60
-//    }
-//
-//    override func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
-//        return 0.01
-//    }
 }
 

@@ -18,46 +18,16 @@ struct Storage {
     static func load() {
         DispatchQueue.global().asyncAfter(deadline: .now() + 0.1) {
             let myNoteBooks = [
-                Notebook(title: "First Notebook",
-                         notes: [
-                            Note(content: "aaaa"),
-                            Note(content: "bbbb"),
-                            Note(content: "cccc"),
-                    ]),
-                Notebook(title: "Second Notebook",
-                         notes: [
-                            Note(content: "dddd"),
-                            Note(content: "eeee"),
-                            Note(content: "ffff"),
-                    ]),
-                Notebook(title: "Third Notebook",
-                         notes: [
-                            Note(content: "gggg"),
-                            Note(content: "hhhh"),
-                            Note(content: "iiii"),
-                    ]),
+                Notebook(title: "First Notebook"),
+                Notebook(title: "Second Notebook"),
+                Notebook(title: "Third Notebook"),
             ]
             
             let sharedWithMe = [
-                Notebook(title: "Tony",
-                         notes: [
-                            Note(content: "AAAA"),
-                            Note(content: "BBBB"),
-                            Note(content: "CCCC"),
-                    ]),
-                Notebook(title: "Sam",
-                         notes: [
-                            Note(content: "DDDD"),
-                            Note(content: "EEEE"),
-                            Note(content: "FFFF"),
-                    ]),
-                Notebook(title: "Lee",
-                         notes: [
-                            Note(content: "GGGG"),
-                            Note(content: "HHHH"),
-                            Note(content: "IIII"),
-                    ]),
-            ]
+                Notebook(title: "Tony"),
+                Notebook(title: "Sam"),
+                Notebook(title: "Lee"),
+            ]        
             
             shared.notebookBlocks = [
                 NotebookBlock(title: Constant.Strings.myNotebooks, notebooks: myNoteBooks, isFold: true),

@@ -10,4 +10,5 @@ import Foundation
 
 extension NSNotification.Name {
     static var didStorageUpdate = NSNotification.Name("didStorageUpdate")
+    static var didAllNotesLoad = NSNotification.Name("didAllNotesLoad")
 }

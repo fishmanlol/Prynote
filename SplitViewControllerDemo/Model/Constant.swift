@@ -11,6 +11,8 @@ enum Constant {
         static let NOTEBOOKCELL = "NOTEBOOKCELL"
         static let NOTEBOOKHEADER = "NOTEBOOKHEADER"
         static let SHOWNOTES = "SHOWNOTES"
+        static let NOTECELL = "NOTECELL"
+        static let SHOWNOTEDETAIL = "SHOWNOTEDETAIL"
     }
     
     enum Strings {
