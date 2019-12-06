@@ -59,7 +59,7 @@ extension NotebooksViewController {
     }
     
     private func configure(_ header: NotebookHeader, with notebookBlock: NotebookBlock) {
-        header.setFold(notebookBlock.isFold, animated: false)
+        header.setFolded(notebookBlock.isFold, animated: false)
         header.titleLabel.text = notebookBlock.title
     }
     
@@ -96,25 +96,27 @@ extension NotebooksViewController {
 extension NotebooksViewController: NotebookHeaderDelegate {
     func noteBookHeaderFoldStatusChanged(_ header: NotebookHeader, foldStatus: Bool, in section: Int) {
         Storage.shared.notebookBlocks[section].isFold = foldStatus
+        tableView.beginUpdates()
+        
         tableView.reloadSections([section], with: .fade)
+        tableView.endUpdates()
     }
 }
 
 //MARK: - UITableView datasource and delegate
 extension NotebooksViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        print(Storage.shared.notebookBlocks.count)
         return Storage.shared.notebookBlocks.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(#function)
+        print(#function, "section", section, isFold(in: section))
         let folded = isFold(in: section)
         return folded ? 0 : Storage.shared.notebookBlocks[section].notebooks.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(#function)
+//        print(#function, indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.Identifier.NOTEBOOKCELL) as! NotebookCell
         let notebook = getNotebook(in: indexPath)
         configure(cell, with: notebook)
@@ -122,7 +124,6 @@ extension NotebooksViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        print("section: \(section)", #function)
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: Constant.Identifier.NOTEBOOKHEADER) as! NotebookHeader
         header.section = section
         header.delegate = self

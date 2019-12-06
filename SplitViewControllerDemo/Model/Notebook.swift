@@ -10,7 +10,7 @@ import Foundation
 
 class Notebook {
     var title: String
-    var notes: [Note] = []
+    var notes: [Note] = [Note(url: ""), Note(url: ""), Note(url: ""), Note(url: "")]
     var allLoaded = false
     
     init(title: String) {

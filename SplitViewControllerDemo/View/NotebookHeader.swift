@@ -26,10 +26,11 @@ class NotebookHeader: UITableViewHeaderFooterView {
     weak var delegate: NotebookHeaderDelegate?
     
     @objc func didTapHeader(_ sender: UITapGestureRecognizer) {
-        setFold(!isFolded, animated: true)
+        setFolded(!isFolded, animated: true)
+        delegate?.noteBookHeaderFoldStatusChanged(self, foldStatus: isFolded, in: section)
     }
     
-    func setFold(_ isFolded: Bool, animated: Bool) {
+    func setFolded(_ isFolded: Bool, animated: Bool) {
         self.isFolded = isFolded
         updateFoldStatus(animated: animated)
     }
@@ -41,8 +42,6 @@ class NotebookHeader: UITableViewHeaderFooterView {
     
     override func prepareForReuse() {
         titleLabel.text = nil
-        isFolded = true
-        delegate = nil
     }
     
     private func updateFoldStatus(animated: Bool) {
@@ -51,7 +50,5 @@ class NotebookHeader: UITableViewHeaderFooterView {
         } else {
             self.arrowImageView.rotate(0, animated: animated)
         }
-        
-        delegate?.noteBookHeaderFoldStatusChanged(self, foldStatus: isFolded, in: section)
     }
 }
