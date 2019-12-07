@@ -111,13 +111,13 @@ struct R: Rswift.Validatable {
     /// This struct is generated for `NotesViewController`, and contains static references to 1 segues.
     struct notesViewController {
       /// Segue identifier `SHOWNOTEDETAIL`.
-      static let shownotedetaiL: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, NotesViewController, NoteDetailViewController> = Rswift.StoryboardSegueIdentifier(identifier: "SHOWNOTEDETAIL")
+      static let shownotedetaiL: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, NotesViewController, UIKit.UINavigationController> = Rswift.StoryboardSegueIdentifier(identifier: "SHOWNOTEDETAIL")
 
       #if os(iOS) || os(tvOS)
       /// Optionally returns a typed version of segue `SHOWNOTEDETAIL`.
       /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
       /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
-      static func shownotedetaiL(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, NotesViewController, NoteDetailViewController>? {
+      static func shownotedetaiL(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, NotesViewController, UIKit.UINavigationController>? {
         return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.notesViewController.shownotedetaiL, segue: segue)
       }
       #endif
@@ -155,7 +155,7 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.image` struct is generated, and contains static references to 9 images.
+  /// This `R.image` struct is generated, and contains static references to 11 images.
   struct image {
     /// Image `add`.
     static let add = Rswift.ImageResource(bundle: R.hostingBundle, name: "add")
@@ -169,6 +169,10 @@ struct R: Rswift.Validatable {
     static let notebook = Rswift.ImageResource(bundle: R.hostingBundle, name: "notebook")
     /// Image `option`.
     static let option = Rswift.ImageResource(bundle: R.hostingBundle, name: "option")
+    /// Image `paper_dark`.
+    static let paper_dark = Rswift.ImageResource(bundle: R.hostingBundle, name: "paper_dark")
+    /// Image `paper_light`.
+    static let paper_light = Rswift.ImageResource(bundle: R.hostingBundle, name: "paper_light")
     /// Image `search`.
     static let search = Rswift.ImageResource(bundle: R.hostingBundle, name: "search")
     /// Image `user`.
@@ -215,6 +219,20 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "option", bundle: ..., traitCollection: ...)`
     static func option(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.option, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "paper_dark", bundle: ..., traitCollection: ...)`
+    static func paper_dark(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.paper_dark, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "paper_light", bundle: ..., traitCollection: ...)`
+    static func paper_light(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.paper_light, compatibleWith: traitCollection)
     }
     #endif
 

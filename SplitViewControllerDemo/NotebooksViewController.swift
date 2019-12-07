@@ -19,6 +19,16 @@ class NotebooksViewController: UITableViewController {
         setUpOthers()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateBars()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     //MARK: - Objc functions
     @objc private func didPullToRefreshing(refreshControl: UIRefreshControl) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
@@ -50,6 +60,11 @@ class NotebooksViewController: UITableViewController {
 
 //MARK: - Helper functions
 extension NotebooksViewController {
+    private func updateBars() {
+        tabBarController?.tabBar.isHidden = false
+        navigationController?.toolbar.isHidden = true
+    }
+    
     private func getNotebook(in indexPath: IndexPath) -> Notebook {
         return Storage.shared.notebookBlocks[indexPath.section].notebooks[indexPath.row]
     }
@@ -71,13 +86,15 @@ extension NotebooksViewController {
     private func setUpOthers() {
         navigationItem.title = "Notebooks"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.setBackgroundImage(R.image.paper_light(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     private func setUpTableView() {
         tableView.register(UINib(resource: R.nib.notebookCell), forCellReuseIdentifier: Constant.Identifier.NOTEBOOKCELL)
         tableView.register(UINib(resource: R.nib.notebookHeader), forHeaderFooterViewReuseIdentifier: Constant.Identifier.NOTEBOOKHEADER)
         tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor.white
+        tableView.backgroundView = UIImageView(image: R.image.paper_light())
     }
     
     private func setUpRefreshing() {
@@ -97,7 +114,6 @@ extension NotebooksViewController: NotebookHeaderDelegate {
     func noteBookHeaderFoldStatusChanged(_ header: NotebookHeader, foldStatus: Bool, in section: Int) {
         Storage.shared.notebookBlocks[section].isFold = foldStatus
         tableView.beginUpdates()
-        
         tableView.reloadSections([section], with: .fade)
         tableView.endUpdates()
     }
@@ -110,13 +126,11 @@ extension NotebooksViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(#function, "section", section, isFold(in: section))
         let folded = isFold(in: section)
         return folded ? 0 : Storage.shared.notebookBlocks[section].notebooks.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        print(#function, indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.Identifier.NOTEBOOKCELL) as! NotebookCell
         let notebook = getNotebook(in: indexPath)
         configure(cell, with: notebook)

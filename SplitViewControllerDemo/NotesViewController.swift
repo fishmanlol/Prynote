@@ -9,7 +9,6 @@
 import UIKit
 import SnapKit
 import DZNEmptyDataSet
-
 class NotesViewController: UITableViewController {
     
     var notebook: Notebook!
@@ -25,24 +24,24 @@ class NotesViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tabBarController?.tabBar.isHidden = true
-        showToolbar()
-        
-        if !notebook.allLoaded {
-            //displayLoading()
-        }
+        updateBars()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.tabBarController?.tabBar.isHidden = false
-        self.hideToolbar()
+        navigationController?.isToolbarHidden = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let noteDetailViewController = segue.destination as? NoteDetailViewController, let indexPath = sender as? IndexPath {
-            noteDetailViewController.note = notebook.notes[indexPath.row]
+        if segue.identifier == Constant.Identifier.SHOWNOTEDETAIL {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let note = notebook.notes[indexPath.row]
+                let controller = (segue.destination as! UINavigationController).topViewController as! NoteDetailViewController
+                controller.note = note
+                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                controller.navigationItem.leftItemsSupplementBackButton = true
+            }
         }
     }
     
@@ -52,7 +51,6 @@ class NotesViewController: UITableViewController {
     }
     
     @objc private func didAllNotesLoad() {
-        //dismissLoading()
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -65,29 +63,27 @@ class NotesViewController: UITableViewController {
 
 //MARK: - Helper functions
 extension NotesViewController {
-    private func dismissLoading() {
-        
-    }
-    
-    private func displayLoading() {
-        
-    }
-    
-    private func hideToolbar() {
-        navigationController?.isToolbarHidden = true
-    }
-    
-    private func showToolbar() {
+    private func updateBars() {
+        //buttom tool bar
         navigationController?.isToolbarHidden = false
-        navigationController?.toolbar.barTintColor = .white
+        navigationController?.toolbar.setBackgroundImage(R.image.paper_light(), forToolbarPosition: .any, barMetrics: .default)
         navigationController?.toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
         
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let newNoteButton = UIBarButtonItem(image: R.image.write(), style: .plain, target: self, action: #selector(didTapNewNotesButton))
         let label = UILabel()
         label.attributedText = NSAttributedString(string: "\(notebook.notes.count) notes", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13)])
         let noteCountLabel = UIBarButtonItem(customView: label)
-        toolbarItems = [space, noteCountLabel, space, newNoteButton]
+        let items: [UIBarButtonItem]
+        
+        if let split = splitViewController,
+            split.isCollapsed {
+            let newNoteButton = UIBarButtonItem(image: R.image.write(), style: .plain, target: self, action: #selector(didTapNewNotesButton))
+            items = [space, noteCountLabel, space, newNoteButton]
+        } else {
+            items = [space, noteCountLabel, space]
+        }
+        
+        toolbarItems = items
     }
     
     private func configure(_ cell: NoteCell, with note: Note) {
@@ -101,6 +97,7 @@ extension NotesViewController {
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         tableView.tableFooterView = UIView()
+        tableView.backgroundView = UIImageView(image: R.image.paper_light())
     }
     
     private func setUpObservers() {
@@ -110,6 +107,7 @@ extension NotesViewController {
     private func setUpOthers() {
         navigationItem.title = "Notes"
         navigationItem.largeTitleDisplayMode = .never
+        tabBarController?.tabBar.isHidden = true
     }
 }
 
@@ -132,9 +130,8 @@ extension NotesViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: Constant.Identifier.SHOWNOTEDETAIL, sender: nil)
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        performSegue(withIdentifier: Constant.Identifier.SHOWNOTEDETAIL, sender: indexPath)
     }
 }
 

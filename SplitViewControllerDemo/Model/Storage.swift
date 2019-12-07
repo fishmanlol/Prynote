@@ -30,9 +30,9 @@ struct Storage {
             ]        
             
             shared.notebookBlocks = [
-                NotebookBlock(title: Constant.Strings.myNotebooks, notebooks: myNoteBooks, isFold: true),
-                NotebookBlock(title: Constant.Strings.sharedWithMe, notebooks: sharedWithMe, isFold: true),
-                NotebookBlock(title: Constant.Strings.iSharedTo, notebooks: sharedWithMe, isFold: true),
+                NotebookBlock(title: Constant.Strings.myNotebooks, notebooks: myNoteBooks, isFold: false),
+                NotebookBlock(title: Constant.Strings.sharedWithMe, notebooks: sharedWithMe, isFold: false),
+                NotebookBlock(title: Constant.Strings.iSharedTo, notebooks: sharedWithMe, isFold: false),
             ]
             
             NotificationCenter.default.post(name: .didStorageUpdate, object: nil)

@@ -15,6 +15,7 @@ class NoteCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        backgroundColor = .clear
     }
 }

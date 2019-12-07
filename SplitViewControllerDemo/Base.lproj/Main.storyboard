@@ -36,10 +36,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2mg-0O-PIZ"/>
                     </view>
+                    <navigationItem key="navigationItem" id="OLD-h8-gMf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FWC-VZ-Q8M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="538" y="1108"/>
+            <point key="canvasLocation" x="-500.00000000000006" y="1078.7946428571429"/>
         </scene>
         <!--Notebooks View Controller-->
         <scene sceneID="blI-gO-TsN">
@@ -89,7 +90,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="g2r-Kc-o2l">
-                        <barButtonItem key="rightBarButtonItem" image="option" id="zjK-eL-vWq">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="option" id="zjK-eL-vWq">
                             <connections>
                                 <action selector="didTapOptionButton:" destination="Jo2-Rb-lkg" id="Jwa-3A-tJM"/>
                             </connections>
@@ -97,7 +98,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="Wjl-Yn-CQH" kind="showDetail" identifier="SHOWNOTEDETAIL" id="pJu-gK-DCj"/>
+                        <segue destination="eGN-5i-Mxp" kind="showDetail" identifier="SHOWNOTEDETAIL" id="362-ov-79g"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cNN-xN-FuQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -162,12 +163,30 @@
                     <tabBarItem key="tabBarItem" title="Notebooks" image="notebook" id="Oaa-cf-um7"/>
                     <connections>
                         <segue destination="bSK-hd-MYb" kind="relationship" relationship="masterViewController" id="VpQ-mf-chw"/>
-                        <segue destination="Wjl-Yn-CQH" kind="relationship" relationship="detailViewController" id="Ibb-Qr-Nj0"/>
+                        <segue destination="eGN-5i-Mxp" kind="relationship" relationship="detailViewController" id="Ibb-Qr-Nj0"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBF-5z-c48" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2507" y="767"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ljJ-0Y-KPJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eGN-5i-Mxp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QIE-WF-TV1">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Wjl-Yn-CQH" kind="relationship" relationship="rootViewController" id="2Cg-v5-bIG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D4h-yS-Nb4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1410.144927536232" y="1078.7946428571429"/>
         </scene>
     </scenes>
     <resources>
@@ -177,6 +196,6 @@
         <image name="user" width="23" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ibb-Qr-Nj0"/>
+        <segue reference="362-ov-79g"/>
     </inferredMetricsTieBreakers>
 </document>

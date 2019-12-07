@@ -14,9 +14,18 @@ class MasterSplitViewController: UISplitViewController, UISplitViewControllerDel
         super.viewDidLoad()
         self.delegate = self
         self.preferredDisplayMode = .allVisible
+        let navigationController = viewControllers[viewControllers.count - 1] as! UINavigationController
+        navigationController.topViewController!.navigationItem.leftBarButtonItem = displayModeButtonItem
     }
     
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
-        return true
+        guard let navigationController = secondaryViewController as? UINavigationController else { return false }
+        guard let noteDetailViewController = navigationController.topViewController as? NoteDetailViewController else { return false }
+        if noteDetailViewController.note == nil {
+            
+            return true
+        }
+        
+        return false
     }
 }

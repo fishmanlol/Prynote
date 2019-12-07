@@ -16,6 +16,7 @@
 		8E0DB3C423983EDB00475B50 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0DB3C323983EDB00475B50 /* UIView+.swift */; };
 		8E0DB3C62398583900475B50 /* NotebookBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0DB3C52398583900475B50 /* NotebookBlock.swift */; };
 		8E0DB3C82398808000475B50 /* NotebookHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E0DB3C72398808000475B50 /* NotebookHeader.xib */; };
+		8EB898ED239B33EA00AB100B /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB898EC239B33EA00AB100B /* UIViewController+.swift */; };
 		8EBB63EB23999D3600F96F6F /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB63E923999D3600F96F6F /* NoteCell.swift */; };
 		8EBB63EC23999D3700F96F6F /* NoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EBB63EA23999D3600F96F6F /* NoteCell.xib */; };
 		8EBB63EE2399B25F00F96F6F /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB63ED2399B25F00F96F6F /* Date+.swift */; };
@@ -23,7 +24,6 @@
 		8EBB63F42399E07200F96F6F /* MasterSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB63F32399E07200F96F6F /* MasterSplitViewController.swift */; };
 		8EBB63F62399EC5900F96F6F /* WaitingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBB63F52399EC5900F96F6F /* WaitingView.swift */; };
 		8EC3E27F2396D8D40077826D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC3E27E2396D8D40077826D /* AppDelegate.swift */; };
-		8EC3E2812396D8D40077826D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC3E2802396D8D40077826D /* ViewController.swift */; };
 		8EC3E2842396D8D40077826D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EC3E2822396D8D40077826D /* Main.storyboard */; };
 		8EC3E2862396D8D60077826D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EC3E2852396D8D60077826D /* Assets.xcassets */; };
 		8EC3E2892396D8D60077826D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EC3E2872396D8D60077826D /* LaunchScreen.storyboard */; };
@@ -44,6 +44,7 @@
 		8E0DB3C323983EDB00475B50 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		8E0DB3C52398583900475B50 /* NotebookBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotebookBlock.swift; sourceTree = "<group>"; };
 		8E0DB3C72398808000475B50 /* NotebookHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotebookHeader.xib; sourceTree = "<group>"; };
+		8EB898EC239B33EA00AB100B /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		8EBB63E923999D3600F96F6F /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		8EBB63EA23999D3600F96F6F /* NoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteCell.xib; sourceTree = "<group>"; };
 		8EBB63ED2399B25F00F96F6F /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
@@ -52,7 +53,6 @@
 		8EBB63F52399EC5900F96F6F /* WaitingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingView.swift; sourceTree = "<group>"; };
 		8EC3E27B2396D8D40077826D /* SplitViewControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitViewControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EC3E27E2396D8D40077826D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8EC3E2802396D8D40077826D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8EC3E2832396D8D40077826D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8EC3E2852396D8D60077826D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EC3E2882396D8D60077826D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -84,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				10A1485A23977B40002A4F48 /* NSNotification.Name+.swift */,
+				8EB898EC239B33EA00AB100B /* UIViewController+.swift */,
 				8E0DB3C323983EDB00475B50 /* UIView+.swift */,
 				8EBB63ED2399B25F00F96F6F /* Date+.swift */,
 			);
@@ -130,13 +131,12 @@
 			children = (
 				8EC3E293239706620077826D /* R.generated.swift */,
 				8EC3E27E2396D8D40077826D /* AppDelegate.swift */,
-				8EC3E2802396D8D40077826D /* ViewController.swift */,
+				8EBB63F32399E07200F96F6F /* MasterSplitViewController.swift */,
 				8EBB63F12399DCCF00F96F6F /* NoteDetailViewController.swift */,
 				8EC3E298239712550077826D /* NotesViewController.swift */,
-				8EBB63F32399E07200F96F6F /* MasterSplitViewController.swift */,
+				8EC3E2902396E9AC0077826D /* NotebooksViewController.swift */,
 				8EC3E29B239723C90077826D /* View */,
 				8EC3E29A239723C30077826D /* Model */,
-				8EC3E2902396E9AC0077826D /* NotebooksViewController.swift */,
 				8EC3E2822396D8D40077826D /* Main.storyboard */,
 				8EC3E2852396D8D60077826D /* Assets.xcassets */,
 				8EC3E2872396D8D60077826D /* LaunchScreen.storyboard */,
@@ -310,7 +310,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EC3E2812396D8D40077826D /* ViewController.swift in Sources */,
 				8EC3E299239712560077826D /* NotesViewController.swift in Sources */,
 				10A1485D239783A1002A4F48 /* NotebookCell.swift in Sources */,
 				8EC3E29F239723DC0077826D /* Note.swift in Sources */,
@@ -328,6 +327,7 @@
 				8E0DB3C62398583900475B50 /* NotebookBlock.swift in Sources */,
 				8EBB63F62399EC5900F96F6F /* WaitingView.swift in Sources */,
 				8EC3E294239706620077826D /* R.generated.swift in Sources */,
+				8EB898ED239B33EA00AB100B /* UIViewController+.swift in Sources */,
 				8EBB63EE2399B25F00F96F6F /* Date+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

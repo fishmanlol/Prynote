@@ -33,7 +33,7 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OJ3-Rg-dV6" userLabel="middle">
                         <rect key="frame" x="0.0" y="50.5" width="609" height="2"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="2" id="fGe-5d-8XX"/>
                         </constraints>
