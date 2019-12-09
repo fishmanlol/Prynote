@@ -10,18 +10,20 @@ import Foundation
 
 class Note {
     var date: Date?
-    var title: String?
-    var content: String?
+    var content: NSAttributedString?
+    var title: NSAttributedString?
+    var detail: NSAttributedString?
     var url: String?
     
     init(url: String) {
-        self.url = url
+        self.url = String(Int.random(in: Int.min...Int.max))
     }
     
     func load(completion: @escaping () -> Void) {
-        DispatchQueue.global().asyncAfter(deadline: .now() + 5) {
-            self.content = "load - \(Int.random(in: 1...10))"
-            self.title = "This is title"
+        DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
+            let html = "<h1>H1 title</h1> <p>p tag<p>"
+            self.content = try? NSAttributedString(data: html.data(using: .utf8)!, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+            self.title = NSAttributedString(string: "Title - \(Int.random(in: 1...10))")
             self.date = Date()
             completion()
         }
@@ -56,4 +58,13 @@ class Note {
 //            }
 //        }
 //    }
+}
+
+extension Note: Equatable {
+    static func ==(lhs: Note, rhs: Note) -> Bool {
+        guard let url1 = lhs.url,
+                let url2 = rhs.url,
+            url1 == url2 else { return false }
+        return true
+    }
 }

@@ -28,4 +28,8 @@ class Notebook {
             NotificationCenter.default.post(name: .didAllNotesLoad, object: self, userInfo: nil)
         }
     }
+    
+    func contains(_ note: Note) -> Bool {
+        return notes.contains(note)
+    }
 }

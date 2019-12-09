@@ -12,6 +12,7 @@ import DZNEmptyDataSet
 class NotesViewController: UITableViewController {
     
     var notebook: Notebook!
+    weak var noteDetailViewController: NoteDetailViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class NotesViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         updateBars()
+        defaultSelectNoteWhenNotCollapsed()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -41,6 +43,7 @@ class NotesViewController: UITableViewController {
                 controller.note = note
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
+                noteDetailViewController = controller
             }
         }
     }
@@ -53,22 +56,40 @@ class NotesViewController: UITableViewController {
     @objc private func didAllNotesLoad() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.updateBars()
+            self.defaultSelectNoteWhenNotCollapsed()
         }
     }
     
     @objc private func didTapNewNotesButton() {
         print("new notes")
     }
+    
+    @objc private func displayModeChangeToAllVisible() {
+        DispatchQueue.main.async {
+            self.updateBars()
+            self.defaultSelectNoteWhenNotCollapsed()
+        }
+    }
 }
 
 //MARK: - Helper functions
 extension NotesViewController {
+    private func defaultSelectNoteWhenNotCollapsed() {
+        if !splitViewController!.isCollapsed {
+            if let note = noteDetailViewController?.note, notebook.contains(note) {
+                let row = notebook.notes.firstIndex(of: note)!
+                tableView.selectRow(at: IndexPath(row: row, section: 0), animated: false, scrollPosition: .middle)
+                tableView(tableView, didSelectRowAt: IndexPath(row: row, section: 0))
+            } else {
+                tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .none)
+                tableView(tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
+            }
+        }
+    }
+    
     private func updateBars() {
         //buttom tool bar
-        navigationController?.isToolbarHidden = false
-        navigationController?.toolbar.setBackgroundImage(R.image.paper_light(), forToolbarPosition: .any, barMetrics: .default)
-        navigationController?.toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
-        
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let label = UILabel()
         label.attributedText = NSAttributedString(string: "\(notebook.notes.count) notes", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13)])
@@ -87,8 +108,8 @@ extension NotesViewController {
     }
     
     private func configure(_ cell: NoteCell, with note: Note) {
-        cell.titleLabel.text = note.title
-        cell.detailLabel.text = note.title
+        cell.titleLabel.text = note.title?.string
+        cell.detailLabel.text = note.title?.string
         cell.dateLabel.text = note.date?.formattedDate
     }
     
@@ -102,12 +123,15 @@ extension NotesViewController {
     
     private func setUpObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(didAllNotesLoad), name: .didAllNotesLoad, object: notebook)
+        NotificationCenter.default.addObserver(self, selector: #selector(displayModeChangeToAllVisible), name: NSNotification.Name("1"), object: nil)
     }
     
     private func setUpOthers() {
         navigationItem.title = "Notes"
-        navigationItem.largeTitleDisplayMode = .never
         tabBarController?.tabBar.isHidden = true
+        navigationController?.isToolbarHidden = false
+        navigationController?.toolbar.setBackgroundImage(R.image.paper_light(), forToolbarPosition: .any, barMetrics: .default)
+        navigationController?.toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
     }
 }
 
@@ -131,8 +155,8 @@ extension NotesViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: Constant.Identifier.SHOWNOTEDETAIL, sender: nil)
-        tableView.deselectRow(at: indexPath, animated: true)
     }
+
 }
 
 extension NotesViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {

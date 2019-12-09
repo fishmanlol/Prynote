@@ -433,18 +433,24 @@ struct _R: Rswift.Validatable {
 
     #if os(iOS) || os(tvOS)
     struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = UIKit.UITabBarController
+      typealias InitialController = MasterSplitViewController
 
       let bundle = R.hostingBundle
       let name = "Main"
+      let secondNavController = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "SecondNavController")
+
+      func secondNavController(_: Void = ()) -> UIKit.UINavigationController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: secondNavController)
+      }
 
       static func validate() throws {
         if UIKit.UIImage(named: "notebook", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'notebook' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "option", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'option' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "search", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'search' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "paper_light", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'paper_light' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "user", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'user' is used in storyboard 'Main', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
+        if _R.storyboard.main().secondNavController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'secondNavController' could not be loaded from storyboard 'Main' as 'UIKit.UINavigationController'.") }
       }
 
       fileprivate init() {}

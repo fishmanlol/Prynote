@@ -19,16 +19,12 @@ class NotebooksViewController: UITableViewController {
         setUpOthers()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        updateBars()
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
-    
+
     //MARK: - Objc functions
     @objc private func didPullToRefreshing(refreshControl: UIRefreshControl) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
@@ -60,11 +56,6 @@ class NotebooksViewController: UITableViewController {
 
 //MARK: - Helper functions
 extension NotebooksViewController {
-    private func updateBars() {
-        tabBarController?.tabBar.isHidden = false
-        navigationController?.toolbar.isHidden = true
-    }
-    
     private func getNotebook(in indexPath: IndexPath) -> Notebook {
         return Storage.shared.notebookBlocks[indexPath.section].notebooks[indexPath.row]
     }

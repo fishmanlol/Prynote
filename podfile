@@ -9,6 +9,7 @@ target 'SplitViewControllerDemo' do
   pod 'Reveal-SDK', :configurations => ['Debug']
   pod 'DZNEmptyDataSet'
   pod 'YYText', :git => 'git@github.com:fishmanlol/YYText.git'
+  pod 'ZSSRichTextEditor', :git => 'git@github.com:fishmanlol/ZSSRichTextEditor.git'
   # Pods for SplitViewControllerDemo
 
 end
