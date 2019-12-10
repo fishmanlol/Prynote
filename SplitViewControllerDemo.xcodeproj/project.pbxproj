@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		109F7990239E255200F98A0B /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F798F239E255200F98A0B /* UITextView+.swift */; };
 		10A1485B23977B40002A4F48 /* NSNotification.Name+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A1485A23977B40002A4F48 /* NSNotification.Name+.swift */; };
 		10A1485D239783A1002A4F48 /* NotebookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A1485C239783A1002A4F48 /* NotebookCell.swift */; };
 		10A148602397843C002A4F48 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A1485F2397843C002A4F48 /* Constant.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		109F798F239E255200F98A0B /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		10A1485A23977B40002A4F48 /* NSNotification.Name+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification.Name+.swift"; sourceTree = "<group>"; };
 		10A1485C239783A1002A4F48 /* NotebookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotebookCell.swift; path = SplitViewControllerDemo/Model/Extension/NotebookCell.swift; sourceTree = SOURCE_ROOT; };
 		10A1485F2397843C002A4F48 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				10A1485A23977B40002A4F48 /* NSNotification.Name+.swift */,
+				109F798F239E255200F98A0B /* UITextView+.swift */,
 				8EB898EC239B33EA00AB100B /* UIViewController+.swift */,
 				8E0DB3C323983EDB00475B50 /* UIView+.swift */,
 				8EBB63ED2399B25F00F96F6F /* Date+.swift */,
@@ -315,6 +318,7 @@
 				8EC3E29F239723DC0077826D /* Note.swift in Sources */,
 				10A1485B23977B40002A4F48 /* NSNotification.Name+.swift in Sources */,
 				8E0DB3C02398258900475B50 /* NotebookHeader.swift in Sources */,
+				109F7990239E255200F98A0B /* UITextView+.swift in Sources */,
 				8EC3E27F2396D8D40077826D /* AppDelegate.swift in Sources */,
 				8EC3E2A123972CF00077826D /* Storage.swift in Sources */,
 				8EC3E2912396E9AC0077826D /* NotebooksViewController.swift in Sources */,

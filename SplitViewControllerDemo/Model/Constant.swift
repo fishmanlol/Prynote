@@ -22,4 +22,9 @@ enum Constant {
         
         static let refreshingText = "Pull to refresh"
     }
+    
+    enum AssociatedObjectKey {
+        static var placeHolder = "placeHolder"
+        static var placeholderLabel = "placeholderLabel"
+    }
 }

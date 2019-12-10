@@ -19,16 +19,12 @@ class NotebooksViewController: UITableViewController {
         setUpOthers()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        updateBars()
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
-    
+
     //MARK: - Objc functions
     @objc private func didPullToRefreshing(refreshControl: UIRefreshControl) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
@@ -36,10 +32,25 @@ class NotebooksViewController: UITableViewController {
         }
     }
     
-    @objc private func didStorageUpdate(no: Notification) {
+    @objc private func didUpdateStorage(no: Notification) {
         if isViewLoaded {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+            }
+        }
+    }
+    
+    @objc private func didAddOrRemoveNote(no: Notification) {
+        if let notebook = no.object as? Notebook {
+            #warning("fix needed")
+            for (section, block) in Storage.shared.notebookBlocks.enumerated() where !block.isFold {
+                if let row = block.notebooks.firstIndex(of: notebook) {
+                    DispatchQueue.main.async {
+                        self.tableView.beginUpdates()
+                        self.tableView.reloadRows(at: [IndexPath(row: row, section: section)], with: .automatic)
+                        self.tableView.endUpdates()
+                    }
+                }
             }
         }
     }
@@ -60,11 +71,6 @@ class NotebooksViewController: UITableViewController {
 
 //MARK: - Helper functions
 extension NotebooksViewController {
-    private func updateBars() {
-        tabBarController?.tabBar.isHidden = false
-        navigationController?.toolbar.isHidden = true
-    }
-    
     private func getNotebook(in indexPath: IndexPath) -> Notebook {
         return Storage.shared.notebookBlocks[indexPath.section].notebooks[indexPath.row]
     }
@@ -105,7 +111,9 @@ extension NotebooksViewController {
     }
     
     private func setUpObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(didStorageUpdate), name: .didStorageUpdate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didUpdateStorage), name: .didUpdateStorage, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didAddOrRemoveNote), name: .didRemoveNote, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didAddOrRemoveNote), name: .didAddNote, object: nil)
     }
 }
 

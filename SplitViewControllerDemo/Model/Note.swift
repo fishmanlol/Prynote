@@ -9,22 +9,34 @@
 import Foundation
 
 class Note {
-    var date: Date?
-    var title: String?
-    var content: String?
+    var date = Date()
+    var content: NSAttributedString = NSAttributedString(string: "")
+    var title: NSAttributedString = NSAttributedString(string: "New Note")
+    var detail: NSAttributedString = NSAttributedString(string: "")
     var url: String?
+    unowned var notebook: Notebook
     
-    init(url: String) {
-        self.url = url
+    init(_ notebook: Notebook) {
+        self.notebook = notebook
     }
     
     func load(completion: @escaping () -> Void) {
-        DispatchQueue.global().asyncAfter(deadline: .now() + 5) {
-            self.content = "load - \(Int.random(in: 1...10))"
-            self.title = "This is title"
-            self.date = Date()
+        DispatchQueue.global().asyncAfter(deadline: .now() + 3) {
+            let html = "<h1>H1 title</h1> <p>p tag</p>"
+            self.content = try! NSAttributedString(data: html.data(using: .utf8)!, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+            self.title = NSAttributedString(string: "Title - \(Int.random(in: 1...10))")
             completion()
         }
+    }
+    
+    func update(title: NSAttributedString?, content: NSAttributedString?) {
+        self.title = title ?? NSAttributedString()
+        self.content = content ?? NSAttributedString()
+        NotificationCenter.default.post(name: .didUpdateNote, object: self)
+    }
+    
+    deinit {
+        print("note deleted!")
     }
     
 //    func loadFromLocal() {
@@ -56,4 +68,10 @@ class Note {
 //            }
 //        }
 //    }
+}
+
+extension Note: Equatable {
+    static func ==(lhs: Note, rhs: Note) -> Bool {
+        return lhs === rhs
+    }
 }

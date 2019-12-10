@@ -35,7 +35,7 @@ struct Storage {
                 NotebookBlock(title: Constant.Strings.iSharedTo, notebooks: sharedWithMe, isFold: false),
             ]
             
-            NotificationCenter.default.post(name: .didStorageUpdate, object: nil)
+            NotificationCenter.default.post(name: .didUpdateStorage, object: nil)
         }
     }
 }
